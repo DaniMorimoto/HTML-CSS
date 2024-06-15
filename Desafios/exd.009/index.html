@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meu Site</title>
+    <style>
+        body {
+            background-color: #1b1e23;
+            color: white;
+            text-align: center;
+        }
+        .video-container {
+            display: none;
+        }
+        .image-container {
+            display: inline-block;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body >
+
+    <h1>Videos legais para assistir</h1>
+
+    <div id="videos">
+        <!-- Vídeos correspondentes -->
+        <div id="video1" class="video-container">
+            <!-- iframe do YouTube para o Video 1 -->
+            <iframe width="640" height="360" src="https://www.youtube.com/embed/rsFCVjr5yxc?si=r8MAmtxDo8iSxJ_b" title="Video 1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        </div>
+        <div id="video2" class="video-container">
+            <!-- iframe do YouTube para o Video 2 -->
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/1-w1RfGIov4?si=WEbhKo0n9HCv9ALJ" title="video 2" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        </div>
+        <div id="video3" class="video-container">
+            <!-- iframe do YouTube para o Video 2 -->
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/iT6E92Kt38o?si=Fm3plqa9qU1EI-b1" title="video 3" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        </div>
+        <div id="video4" class="video-container">
+            <!-- iframe do YouTube para o Video 2 -->
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/S9uPNppGsGo?si=-4i9Pf1ck0lPP8vt" title="video 4" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        </div>
+        <!-- Outros vídeos seguem o mesmo padrão -->
+    </div>
+
+</div>
+
+    <div id="imagens">
+        <!-- Imagens correspondentes com links para mostrar os vídeos -->
+        <div class="image-container" onclick="mostrarVideo('video1')">
+            <!-- Imagem 1 -->
+            <img src="fotos/thumb-html.png" alt="Imagem 1" width="300" height="150">
+        </div>
+        <!-- Outras imagens seguem o mesmo padrão -->
+    
+        <!-- Imagens correspondentes com links para mostrar os vídeos -->
+        <div class="image-container" onclick="mostrarVideo('video2')">
+            <!-- Imagem 1 -->
+            <img src="fotos/thumb-js.png" alt="Imagem 2" width="300" height="150">
+        </div>
+        <!-- Outras imagens seguem o mesmo padrão -->
+         <!-- Imagens correspondentes com links para mostrar os vídeos -->
+         <div class="image-container" onclick="mostrarVideo('video3')">
+            <!-- Imagem 1 -->
+            <img src="fotos/thumb-hardware.png" alt="Imagem 3" width="300" height="150">
+        </div>
+         <!-- Imagens correspondentes com links para mostrar os vídeos -->
+         <div class="image-container" onclick="mostrarVideo('video4')">
+            <!-- Imagem 1 -->
+            <img src="fotos/thumb-python.png" alt="Imagem 4" width="300" height="150">
+    </div>
+        <!-- Outras imagens seguem o mesmo padrão -->
+    
+        <!-- Botão "Voltar para a galeria" e Frase "Veja o curso completo" -->
+    <div id="botao-e-frase">
+        <p>
+            <a href="https://www.youtube.com/@CursoemVideo/courses" target="_blank">Veja o curso completo</a>
+        </p>
+        <button class="custom-button" onclick="goBack()">
+            <img src="fotos/voltar.png" alt="Voltar">
+        </button>
+    </div>
+
+    <script>
+        function mostrarVideo(videoId) {
+            var videos = document.querySelectorAll('.video-container');
+            var images = document.querySelectorAll('.image-container');
+
+            videos.forEach(function(video) {
+                video.style.display = 'none';
+            });
+
+            images.forEach(function(image) {
+                image.style.display = 'none';
+            });
+
+            var video = document.getElementById(videoId);
+            if (video) {
+                video.style.display = 'block';
+            }
+
+            window.history.pushState({ videoId }, "", "#" + videoId);
+        }
+
+        function goBack() {
+            window.location.href = "file:///C:/Users/max_m/Documents/Estudos%20CEV/HTML-CSS/Exercicios/exd.009/index.html";
+        }
+
+        window.addEventListener("popstate", function(event) {
+            if (event.state && event.state.videoId) {
+                mostrarVideo(event.state.videoId);
+            }
+        });
+    </script>
+</body>
+</html>
